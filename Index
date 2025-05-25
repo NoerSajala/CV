@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Curriculum Vitae - BLACKBOXAI</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet" />
+<!-- Bootstrap CSS CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    /* Root colors and fonts */
+    :root {
+        --primary-color: #0d6efd;
+        --secondary-color: #6610f2;
+        --bg-light: #f7fafc;
+        --bg-dark: #1e1e2f;
+        --text-light: #f1f1f5;
+        --text-dark: #343a40;
+        --accent-color: #ffa500;
+        --shadow-color: rgba(13,110,253,0.3);
+        --font-display: 'Montserrat', sans-serif;
+        --font-body: 'Open Sans', sans-serif;
+    }
+    /* Body and general layout */
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+        color: var(--text-light);
+        font-family: var(--font-body);
+        min-height: 100vh;
+        padding-bottom: 50px;
+    }
+    /* Container */
+    .container-cv {
+        max-width: 960px;
+        background: #202336dd;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px var(--shadow-color);
+        margin: 40px auto;
+        padding: 40px 30px 60px;
+        backdrop-filter: saturate(180%) blur(10px);
+        transition: all 0.35s ease;
+    }
+    .container-cv:hover {
+        box-shadow: 0 10px 30px var(--shadow-color);
+    }
+    /* Header */
+    header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        user-select: none;
+    }
+    .profile-img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 6px solid var(--accent-color);
+        box-shadow: 0 0 12px var(--accent-color);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .profile-img:hover {
+        transform: scale(1.08) rotate(5deg);
+        box-shadow: 0 0 20px var(--accent-color);
+    }
+    h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 3rem;
+        margin-top: 15px;
+        letter-spacing: 2px;
+        color: var(--accent-color);
+        text-shadow: 0 2px 8px rgba(255,165,0,0.7);
+    }
+    h3 {
+        font-weight: 400;
+        color: #bbb;
+        font-style: italic;
+        margin-top: 6px;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+    }
+    /* Custom section titles */
+    .section-title {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 6px;
+        margin-bottom: 1.5rem;
+        user-select: none;
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    }
+    /* Paragraph styling */
+    p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: var(--text-light);
+    }
+    p strong {
+        color: var(--accent-color);
+    }
+    p em {
+        font-style: italic;
+        color: #e0a800;
+    }
+    p mark {
+        background-color: #d39e00aa;
+        padding: 0 4px;
+        border-radius: 4px;
+        color: #3d2f00;
+        font-weight: 600;
+    }
+    /* Cards for sections */
+    .card-section {
+        background: #2c3348dd;
+        border-radius: 15px;
+        padding: 30px 25px;
+        margin-bottom: 3rem;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        transition: background 0.3s ease;
+    }
+    .card-section:hover {
+        background: #2e3955ee;
+        box-shadow: 0 10px 25px var(--accent-color);
+    }
+    /* Image gallery */
+    .img-gallery img {
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        width: 100%;
+        margin-bottom: 1.25rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        object-fit: cover;
+        height: 180px;
+    }
+    .img-gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px var(--accent-color);
+    }
+    /* Work Experience and Education cards */
+    .exp-card, .edu-card {
+        background: #1a2033;
+        border-radius: 12px;
+        padding: 18px 20px;
+        margin-bottom: 18px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        transition: background 0.3s ease;
+        cursor: default;
+        user-select: none;
+    }
+    .exp-card:hover, .edu-card:hover {
+        background: var(--accent-color);
+        color: #202026;
+        box-shadow: 0 10px 30px var(--accent-color);
+    }
+    .exp-period, .edu-year {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+        user-select: text;
+    }
+    .exp-company, .edu-institution {
+        font-weight: 700;
+        font-size: 1.25rem;
+        margin-bottom: 6px;
+        user-select: text;
+    }
+    .exp-position {
+        font-style: italic;
+        font-weight: 600;
+        margin-bottom: 10px;
+        user-select: text;
+        color: #f4b942;
+    }
+    .exp-highlights, .edu-notes {
+        line-height: 1.4;
+        font-size: 1rem;
+        user-select: text;
+    }
+    /* Skills List & Progress Bars */
+    .skill-item {
+        margin-bottom: 16px;
+    }
+    .skill-label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: var(--accent-color);
+    }
+    .progress {
+        height: 18px;
+        background-color: #1a2033;
+        border-radius: 10px;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+    }
+    .progress-bar {
+        background: linear-gradient(90deg, #ffa500, #ffbb33);
+        box-shadow: 0 2px 6px rgba(255,165,0,0.6);
+        font-weight: 700;
+        color: #202026;
+        text-align: right;
+        padding-right: 10px;
+        user-select: none;
+    }
+    /* Lists */
+    ul, ol {
+        font-size: 1.05rem;
+        color: var(--text-light);
+        margin-left: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    li {
+        margin-bottom: 0.5rem;
+    }
+    /* Links */
+    a.custom-link {
+        color: var(--accent-color);
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.2s ease;
+        user-select: none;
+    }
+    a.custom-link:hover, a.custom-link:focus {
+        color: var(--primary-color);
+        text-decoration: underline;
+        transform: scale(1.1);
+    }
+    /* Responsive two column for lists */
+    .two-col {
+        display: flex;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin-bottom: 3rem;
+    }
+    .col-half {
+        flex: 1 1 45%;
+    }
+    /* Footer */
+    footer {
+        text-align: center;
+        color: #bbb;
+        margin-top: 3rem;
+        font-style: italic;
+        font-size: 0.9rem;
+        user-select: none;
+    }
+    /* Animate fadeInUp */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .fadeInUp {
+        animation: fadeInUp 1s ease forwards;
+        opacity: 0;
+    }
+    /* Stagger effect */
+    .fadeInUp.delay-1 { animation-delay: 0.3s; }
+    .fadeInUp.delay-2 { animation-delay: 0.6s; }
+    .fadeInUp.delay-3 { animation-delay: 0.9s; }
+    .fadeInUp.delay-4 { animation-delay: 1.2s; }
+</style>
+</head>
+<body>
+<!-- Main CV container -->
+<div class="container-cv" role="main" aria-label="Curriculum Vitae BLACKBOXAI">
+    <!-- Header -->
+    <header>
+        <img src="https://i.pravatar.cc/200?img=11" 
+             alt="Portrait photo of BLACKBOXAI" 
+             class="profile-img fadeInUp delay-1"
+             loading="lazy" />
+        <h1 class="fadeInUp delay-2">BLACKBOXAI</h1>
+        <h3 class="fadeInUp delay-2">Senior Software Engineer & AI Enthusiast</h3>
+    </header>
+
+    <!-- About Me -->
+    <section aria-labelledby="about-title" class="card-section fadeInUp delay-3">
+        <!-- Intro text about myself -->
+        <h2 class="section-title" id="about-title">About Me</h2>
+        <!-- These paragraphs introduce myself and highlight my skills and passions -->
+        <p>
+            <strong>Hello!</strong> I am <em>BLACKBOXAI</em>, a passionate software engineer with a love for <mark>innovative AI-driven solutions</mark>, building impactful applications and delivering exceptional user experiences. I thrive on challenges and enjoy working with the latest technologies to solve real-world problems.
+        </p>
+        <p>
+            I have extensive experience in <code>multiple programming languages</code> and modern frameworks, with a keen eye for clean, maintainable code. Constant learning and collaboration are at the core of how I grow and achieve success with my projects.
+        </p>
+    </section>
+
+    <!-- Image Gallery -->
+    <section aria-labelledby="gallery-title" class="card-section fadeInUp delay-4">
+        <h2 class="section-title" id="gallery-title">Gallery</h2>
+        <div class="img-gallery row g-4">
+            <div class="col-sm-6 col-md-4">
+                <img src="https://picsum.photos/seed/devproject/400/250" alt="Screenshot of a development project" loading="lazy" />
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="https://picsum.photos/seed/conference/400/250" alt="Photo at a developer conference" loading="lazy" />
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <img src="https://picsum.photos/seed/travels/400/250" alt="Landscape from travels" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section aria-labelledby="experience-title" class="card-section fadeInUp delay-3">
+        <h2 class="section-title" id="experience-title">Work Experience</h2>
+        <div class="exp-card" tabindex="0" aria-label="Work Experience 2021 to present at Innovatech Solutions">
+            <div class="exp-period">2021 - Present</div>
+            <div class="exp-company">Innovatech Solutions</div>
+            <div class="exp-position">Senior Software Engineer</div>
+            <div class="exp-highlights">
+                Designed AI-powered web applications; led agile teams to success.
+            </div>
+        </div>
+        <div class="exp-card" tabindex="0" aria-label="Work Experience 2018 to 2021 at CodeCraft Inc.">
+            <div class="exp-period">2018 - 2021</div>
+            <div class="exp-company">CodeCraft Inc.</div>
+            <div class="exp-position">Fullstack Developer</div>
+            <div class="exp-highlights">
+                Created scalable backend APIs and dynamic React frontends.
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section aria-labelledby="education-title" class="card-section fadeInUp delay-4">
+        <h2 class="section-title" id="education-title">Education</h2>
+        <div class="edu-card" tabindex="0" aria-label="Bachelor Degree at Tech University 2014 to 2018">
+            <div class="edu-year">2014 - 2018</div>
+            <div class="edu-institution">Tech University</div>
+            <div class="edu-degree">Bachelor of Computer Science</div>
+            <div class="edu-notes">Graduated with Honors</div>
+        </div>
+        <div class="edu-card" tabindex="0" aria-label="AI and Machine Learning online courses in 2019">
+            <div class="edu-year">2019</div>
+            <div class="edu-institution">Online Courses</div>
+            <div class="edu-degree">AI & Machine Learning</div>
+            <div class="edu-notes">Specialized courses in AI & ML technologies</div>
+        </div>
+    </section>
+
+    <!-- Key Skills -->
+    <section aria-labelledby="skills-title" class="card-section fadeInUp delay-3">
+        <h2 class="section-title" id="skills-title">Key Skills</h2>
+        <div class="skill-item">
+            <div class="skill-label" id="skill_js">JavaScript</div>
+            <div class="progress" role="progressbar" aria-labelledby="skill_js" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90">
+                <div class="progress-bar" style="width: 90%;">90%</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label" id="skill_python">Python</div>
+            <div class="progress" role="progressbar" aria-labelledby="skill_python" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                <div class="progress-bar" style="width: 85%;">85%</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label" id="skill_java">Java</div>
+            <div class="progress" role="progressbar" aria-labelledby="skill_java" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <div class="progress-bar" style="width: 80%;">80%</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label" id="skill_react">React</div>
+            <div class="progress" role="progressbar" aria-labelledby="skill_react" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88">
+                <div class="progress-bar" style="width: 88%;">88%</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-label" id="skill_tf">TensorFlow</div>
+            <div class="progress" role="progressbar" aria-labelledby="skill_tf" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
+                <div class="progress-bar" style="width: 75%;">75%</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests & Hobbies -->
+    <section aria-labelledby="interests-title" class="card-section fadeInUp delay-4">
+        <h2 class="section-title" id="interests-title">Interests & Hobbies</h2>
+        <ol>
+            <li>Artificial Intelligence Research</li>
+            <li>Open Source Contribution</li>
+            <li>Landscape & Portrait Photography</li>
+            <li>Traveling & Cultural Exploration</li>
+        </ol>
+    </section>
+
+    <!-- External Links -->
+    <section aria-labelledby="links-title" class="card-section fadeInUp delay-4 text-center">
+        <h2 class="section-title" id="links-title">Find me online</h2>
+        <p>
+            <a href="https://github.com/blackboxai" target="_blank" rel="noopener noreferrer" class="custom-link" title="GitHub Profile">GitHub</a> &nbsp; | &nbsp;
+            <a href="https://www.linkedin.com/in/blackboxai" target="_blank" rel="noopener noreferrer" class="custom-link" title="LinkedIn Profile">LinkedIn</a> &nbsp; | &nbsp;
+            <a href="https://blackboxai.dev" target="_blank" rel="noopener noreferrer" class="custom-link" title="Personal Portfolio">Portfolio</a>
+        </p>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer aria-label="Copyright">
+    &copy; 2024 BLACKBOXAI. All rights reserved.
+</footer>
+
+<!-- Bootstrap JS Bundle CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
